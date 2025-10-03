@@ -105,7 +105,7 @@
         <form action="{{ url('/api/register') }}" method="POST">
             @csrf
             <div class="campos-group">
-                <input type="hidden" name="rol" value="tecnicoTI">
+                <input type="hidden" name="rol" value="TiSupport">
                 <div class="form-group">
                     <label for="name">Nombre:</label>
                     <input type="text" id="name" name="name" placeholder="Nombre del usuario" required>

@@ -15,7 +15,7 @@
         width: 100%;
         text-align: center;
         color: #000000;
-        background-color: #ffd768c1;
+        background-color: #ff6868c1;
         font-size: 2rem;
         font-weight: bold;
         margin-bottom: 30px;
@@ -75,11 +75,11 @@
 
         button {
             display: block;
-            background-color: #ffa500;
+            background-color: #ff3c00ff;
             padding: 10px 20px;
             color: white;
             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            border: 2px solid #cc8400;
+            border: 2px solid #cc3000ff;
             font-weight: bold;
         }
         .button-submit{
@@ -87,7 +87,7 @@
         }
 
         button:hover {
-            background-color: #e69500;
+            background-color: #e60000ff;
         }
 
         .error-message {

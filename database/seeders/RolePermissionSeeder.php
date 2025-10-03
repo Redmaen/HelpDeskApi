@@ -26,7 +26,7 @@ class RolePermissionSeeder extends Seeder
         }
 
         $client = Role::firstOrCreate(['name' => 'client']);
-        $technical = Role::firstOrCreate(['name' => 'technical']);
+        $inSituSupport = Role::firstOrCreate(['name' => 'InSituSupport']);
         $tiSupport = Role::firstOrCreate(['name' => 'TiSupport']);
         $admin = Role::firstOrCreate(['name' => 'admin']);
 
@@ -39,13 +39,13 @@ class RolePermissionSeeder extends Seeder
         $client->syncPermissions($permissionsClient);
 
         // TECNICO
-        $modelsTechnical = ['ClientG', 'Software','Plan','RegisterHardware','AccountRegister','Company','NaturalPerson','Branch','Machine','SoftwareMachine',
+        $modelsInSituSupport = ['ClientG', 'Software','Plan','RegisterHardware','AccountRegister','Company','NaturalPerson','Branch','Machine','SoftwareMachine',
                 'AccountWorker','Area','Hardware','ContactRef','Ticket'];
-        $termsTechnical = ['view','create'];
-        $permTechnicalExtra = ['edit Software'];
-        $permissionsTechnical = $this->generatePermissions($modelsTechnical, $termsTechnical, $permTechnicalExtra);
-        //unset($permissionsTechnical[array_search('delete ClientG', $permissionsTechnical)]);
-        $technical->syncPermissions($permissionsTechnical);
+        $termsInSituSupport = ['view','create'];
+        $permInSituSupportExtra = ['edit Software'];
+        $permissionsInSituSupport = $this->generatePermissions($modelsInSituSupport, $termsInSituSupport, $permInSituSupportExtra);
+        //unset($permissionsInSituSupport[array_search('delete ClientG', $permissionsInSituSupport)]);
+        $inSituSupport->syncPermissions($permissionsInSituSupport);
 
         // SOPORTE TI
         $modelsTiSupport = ['ClientG', 'Software','Plan','RegisterHardware','AccountRegister','Company','NaturalPerson','Branch','Machine','SoftwareMachine', 'AccountWorker','Area','Hardware','ContactRef','Ticket'];
