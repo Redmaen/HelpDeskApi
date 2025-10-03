@@ -26,7 +26,15 @@ class AuthController extends Controller
         $tokenModel->expires_at = Carbon::now()->addWeeks(2);
         $tokenModel->save();
 
-        return response()->json(['token' => $token->plainTextToken]);
+        return response()->json([
+        'token' => $token->plainTextToken,
+        'user' => [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'roles' => $user->getRoleNames()
+        ]
+    ]);
     }
 
     public function register(Request $request)
@@ -39,26 +47,28 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            $error = $validator->errors()->first();
-            if ($request->rol === 'admin') {
-                return view('registerAdmin', ['error' => $error]);
-            } else {
-                return view('register', ['error' => $error]);
-            }
+            return response()->json(['message' => $validator->errors()->first()], 422);
         }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        if ($request->rol === 'admin') {
-            $user->assignRole('admin');
-        } else {
-            $user->assignRole('client');
-        }
+          $user->assignRole($request->rol);
 
-        return view('welcome');
+        $token = $user->createToken('token');
+
+        return response()->json([
+            'token' => $token->plainTextToken,
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'roles' => $user->getRoleNames()
+            ]
+        ]);
     }
 
     public function viewRegister()
@@ -70,6 +80,16 @@ class AuthController extends Controller
     {
         return view('registerAdmin');
     }
+
+    public function viewRegisterTecnicoTI()
+    {
+        return view('registerTecnicoTI');
+    }
+    public function viewRegisterTecnicoInSitu()
+    {
+        return view('registerTecnicoInSitu');
+    }
+
 
 
 }

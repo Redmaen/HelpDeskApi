@@ -15,7 +15,7 @@
         width: 100%;
         text-align: center;
         color: #000000;
-        background-color: #ffd768c1;
+        background-color: #7268ffc1;
         font-size: 2rem;
         font-weight: bold;
         margin-bottom: 30px;
@@ -39,7 +39,6 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-
 
         form {
             display: flex;
@@ -75,11 +74,11 @@
 
         button {
             display: block;
-            background-color: #ffa500;
+            background-color: #3f14dd;
             padding: 10px 20px;
             color: white;
             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            border: 2px solid #cc8400;
+            border: 2px solid #1c22c6;
             font-weight: bold;
         }
         .button-submit{
@@ -87,7 +86,7 @@
         }
 
         button:hover {
-            background-color: #e69500;
+            background-color: #2300e6;
         }
 
         .error-message {
@@ -98,16 +97,15 @@
             border-radius: 8px;
             color: #900;
         }
-
     </style>
 </head>
 <body>
     <div class="form-contenedor">
-        <h2 class="form-titulo">Registrar Cliente</h2>
+        <h2 class="form-titulo">Registrar Tecnico TI</h2>
         <form action="{{ url('/api/register') }}" method="POST">
             @csrf
             <div class="campos-group">
-                <input type="hidden" name="rol" value="client">
+                <input type="hidden" name="rol" value="tecnicoTI">
                 <div class="form-group">
                     <label for="name">Nombre:</label>
                     <input type="text" id="name" name="name" placeholder="Nombre del usuario" required>
